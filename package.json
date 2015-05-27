@@ -1,0 +1,25 @@
+{
+  "name": "metalsmith-page-titles",
+  "description": "",
+  "keywords": [
+    "Metalsmith"
+  ],
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "author": "dale tan",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hellatan/metalsmith-page-titles.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "metalsmith": "^1.7.0",
+    "mocha": "^2.2.5"
+  },
+  "dependencies": {
+    "find-namespace-value": "^1.0.0"
+  }
+}
