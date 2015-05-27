@@ -21,13 +21,14 @@ var defaultMetaData = {
 
 describe('metalsmith-page-titles', function () {
     var M;
+    var MD;
     beforeEach(function () {
-        M = Metalsmith('test/fixtures')
-            .metadata(defaultMetaData)
+        M = Metalsmith('test/fixtures');
+        MD = Metalsmith('test/fixtures').metadata(defaultMetaData);
     });
     describe('default metadata options', function () {
         it('should create page titles based on default settings', function (done) {
-            M.use(pageTitles())
+            MD.use(pageTitles())
                 .build(function (err, files) {
                     if (err) {
                         return done(err);
@@ -38,7 +39,7 @@ describe('metalsmith-page-titles', function () {
         });
 
         it('should create prepended page titles', function (done) {
-            M.use(pageTitles({
+            MD.use(pageTitles({
                     prepend: true
                 }))
                 .build(function (err, files) {
@@ -51,7 +52,7 @@ describe('metalsmith-page-titles', function () {
         });
 
         it('should create a title with a different separator', function (done) {
-            M.use(pageTitles({
+            MD.use(pageTitles({
                     separator: ' ~ '
                 }))
                 .build(function (err, files) {
@@ -73,6 +74,7 @@ describe('metalsmith-page-titles', function () {
             }
         };
         var namespace = 'different.name.space';
+
         it('should use the `namespace` option', function (done) {
             M.metadata(metadata)
                 .use(pageTitles({
@@ -100,6 +102,15 @@ describe('metalsmith-page-titles', function () {
                 });
         });
     });
+    it('should return only the site title', function (done) {
+        MD.use(pageTitles())
+            .build(function (err, files) {
+                if (err) {
+                    return done(err);
+                }
+                done();
+            });
+    });
     it('should NOT create pageTitle property', function (done) {
         M.metadata({})
             .use(pageTitles())
@@ -107,8 +118,8 @@ describe('metalsmith-page-titles', function () {
                 if (err) {
                     return done(err);
                 }
-                assert.equal(typeof files['page.md'].pageTitle, 'undefined');
+                assert.equal(typeof files['no-title.md'].pageTitle, 'undefined');
                 done();
             });
-    })
+    });
 });
