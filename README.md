@@ -1,5 +1,7 @@
 # Metalsmith Page Titles
 
+[![Build Status](https://travis-ci.org/hellatan/metalsmith-page-titles.svg?branch=master)](https://travis-ci.org/hellatan/metalsmith-page-titles)
+
 Gives your Metalsmith build the ability to add a global site title to the page title based on your markdown frontmatter and Metalsmith metadata
 
 ## Installation
